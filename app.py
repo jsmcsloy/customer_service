@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime as dt
 from pandas import DataFrame, read_csv, read_excel
-
+import openpyxl
 
 
 #set date & day format
@@ -16,6 +16,7 @@ todays_date = days[today.weekday()],date1
 
 
 
+
 #set up title and basic skeleton
 st.title("Customer Service Tracker") 
 try:  
@@ -25,37 +26,37 @@ except:
   
 
 
-try:
+#try:
    
-    df = pd.read_excel(file)
-    #mask_matched = df.isna(df["Date on database"])
-    df = df[df["Date on database"].isnull()]
+df = pd.read_excel(file)
+#mask_matched = df.isna(df["Date on database"])
+df = df[df["Date on database"].isnull()]
 
-    matched = df
-    #late matches
-    late = matched[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]]
+matched = df
+#late matches
+late = matched[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]]
 
 
-    late['Our Due Date'] = late['Our Due Date'].dt.strftime('%d-%m-%Y')
-    late = late[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]].dropna()
-    late = late.sort_values(by='Our Due Date')
-    mask = (df["Our Due Date"] >= now)
-    filtered = df=df.loc[mask]
+late['Our Due Date'] = late['Our Due Date'].dt.strftime('%d-%m-%Y')
+late = late[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]].dropna()
+late = late.sort_values(by='Our Due Date')
+mask = (df["Our Due Date"] >= now)
+filtered = df=df.loc[mask]
 
-    #Due matches
-    df['Our Due Date'] = df['Our Due Date'].dt.strftime('%d-%m-%Y')
-    df[["Brand Reference","Product Line"]] = df[["Brand Reference", "Product Line"]].astype(str)
-    due = df[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]].dropna()
-    due = due.sort_values(by='Our Due Date')
+#Due matches
+df['Our Due Date'] = df['Our Due Date'].dt.strftime('%d-%m-%Y')
+df[["Brand Reference","Product Line"]] = df[["Brand Reference", "Product Line"]].astype(str)
+due = df[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]].dropna()
+due = due.sort_values(by='Our Due Date')
 
-    st.header("Matches due  " + todays_date[0] +" " + todays_date[1])
-    st.write(due)
+st.header("Matches due  " + todays_date[0] +" " + todays_date[1])
+st.write(due)
 
-    st.header("Overdue matches  " )
-    st.write(late)
+st.header("Overdue matches  " )
+st.write(late)
 
-except: 
-    st.write("Error processing file, try again with a differnt file ")
+# except: 
+#     st.write("Error processing file, try again with a differnt file ")
 
 
 # try:
