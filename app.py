@@ -17,11 +17,14 @@ todays_date = days[today.weekday()],date1
 
 #set up title and basic skeleton
 st.title("Customer Service Tracker") 
+try:  
+    file = st.file_uploader("Upload and visualise the data ... .xlxs/csv")
+except:
+    pass
+
 
 try:
-    file = st.file_uploader("Upload and visualise the data ... .xlxs/csv")
-
-
+   
     df = pd.read_excel(file)
     #mask_matched = df.isna(df["Date on database"])
     df = df[df["Date on database"].isnull()]
@@ -50,7 +53,7 @@ try:
     st.write(late)
 
 except: 
-    pass
+    st.write("Error processing file, try again with a differnt file ")
 
 
 # try:
