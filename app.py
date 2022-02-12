@@ -23,7 +23,7 @@ st.title("Customer Service Tracker")
 try:  
     file = st.file_uploader("Upload and visualise the data ... .xlxs/csv")
 except:
-
+    pass
   
 
 
