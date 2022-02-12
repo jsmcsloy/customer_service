@@ -28,6 +28,8 @@ try:
     df = pd.read_excel(file)
     #mask_matched = df.isna(df["Date on database"])
     df = df[df["Date on database"].isnull()]
+    
+    st.write("pass1")
 
     matched = df
     #late matches
