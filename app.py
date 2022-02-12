@@ -23,48 +23,39 @@ except:
     pass
 
 
-try:
+
    
-    df = pd.read_excel(file)
-    #mask_matched = df.isna(df["Date on database"])
-    df = df[df["Date on database"].isnull()]
-    
-    st.write("pass1")
+df = pd.read_excel(file)
+#mask_matched = df.isna(df["Date on database"])
+df = df[df["Date on database"].isnull()]
 
-    matched = df
-    #late matches
-    late = matched[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]]
+st.write("pass1")
 
-
-    late['Our Due Date'] = late['Our Due Date'].dt.strftime('%d-%m-%Y')
-    late = late[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]].dropna()
-    late = late.sort_values(by='Our Due Date')
-    mask = (df["Our Due Date"] >= now)
-    filtered = df=df.loc[mask]
-
-    #Due matches
-    df['Our Due Date'] = df['Our Due Date'].dt.strftime('%d-%m-%Y')
-    df[["Brand Reference","Product Line"]] = df[["Brand Reference", "Product Line"]].astype(str)
-    due = df[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]].dropna()
-    due = due.sort_values(by='Our Due Date')
-
-    st.header("Matches due  " + todays_date[0] +" " + todays_date[1])
-    st.write(due)
-
-    st.header("Overdue matches  " )
-    st.write(late)
-
-except: 
-    st.write("Error processing file, try again with a differnt file ")
+matched = df
+#late matches
+late = matched[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]]
 
 
-# try:
-# 	df = pd.read_excel(file)
-# except:
-# 	df = pd.read_csv(file)
+late['Our Due Date'] = late['Our Due Date'].dt.strftime('%d-%m-%Y')
+late = late[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]].dropna()
+late = late.sort_values(by='Our Due Date')
+mask = (df["Our Due Date"] >= now)
+filtered = df=df.loc[mask]
 
-# finally:
-# 	st.write("error")
+#Due matches
+df['Our Due Date'] = df['Our Due Date'].dt.strftime('%d-%m-%Y')
+df[["Brand Reference","Product Line"]] = df[["Brand Reference", "Product Line"]].astype(str)
+due = df[["Our Due Date","Service","Product Line","Brand Reference", "Colourist"]].dropna()
+due = due.sort_values(by='Our Due Date')
+
+st.header("Matches due  " + todays_date[0] +" " + todays_date[1])
+st.write(due)
+
+st.header("Overdue matches  " )
+st.write(late)
+
+
+
 
 
  
