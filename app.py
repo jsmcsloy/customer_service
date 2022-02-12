@@ -3,10 +3,21 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 import datetime as dt
+<<<<<<< HEAD
 import openpyxl
 from pandas import DataFrame, read_csv, read_excel
 import base64
 import 
+=======
+#import openpyxl
+import pandas as pd
+from pandas import DataFrame, read_csv, read_excel
+import base64
+import os
+
+
+
+>>>>>>> 09dfff2b2559b4806ec002bcc936d11f4ba4bd3c
 
 #set date & day format
 today = dt.datetime.today()
@@ -24,7 +35,11 @@ st.title("Customer Service Tracker")
 try:  
     file = st.file_uploader("Upload and visualise the data ... .xlxs/csv")
 except:
+<<<<<<< HEAD
     st.write("idle")
+=======
+    pass
+>>>>>>> 09dfff2b2559b4806ec002bcc936d11f4ba4bd3c
 
 
 try:
