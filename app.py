@@ -1,5 +1,5 @@
 import pandas as pd
-from pandas import DataFrame, read_csv
+from pandas import DataFrame, read_csv, read_excel
 import streamlit as st
 import numpy as np
 import base64
