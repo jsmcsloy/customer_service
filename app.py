@@ -4,7 +4,7 @@ import streamlit as st
 import numpy as np
 import base64
 import openpyxl
-from datetime import datetime as dt
+import datetime as dt
 
 
 #set date & day format
