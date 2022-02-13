@@ -22,7 +22,7 @@ todays_date = days[today.weekday()],date1
 #set up title and basic skeleton
 st.title("Customer Service Tracker") 
 try:  
-    file = st.file_uploader("Upload and visualise the data ... .xlxs/csv")
+    file = st.file_uploader("")
 except:
     pass
   
