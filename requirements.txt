@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 altair==4.2.0
 argon2-cffi==21.3.0
 argon2-cffi-bindings==21.2.0
@@ -97,3 +98,6 @@ webencodings==0.5.1
 widgetsnbextension==3.5.2
 xlrd==2.0.1
 zipp==3.7.0
+=======
+openpyxl==1.1.0
+>>>>>>> 2c67e010691e49af764ff2c14cba9c6bf7271e2f
