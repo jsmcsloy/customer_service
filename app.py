@@ -58,7 +58,7 @@ try:
     st.write(late)
 
 except: 
-    st.write("Error processing file, try again with a differnt file ")
+    st.write(" ")
 
 
 # try:
